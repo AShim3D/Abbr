@@ -344,6 +344,7 @@
             abbreviations: 'abbreviations.csv'
         };
 
+/*
         const EMBEDDED_GROUPS_DATA = `
 Загальновійськові частини і підрозділи,no
 Артилерійські частини і підрозділи,no
@@ -639,7 +640,7 @@ NATО (НАТО),"НАСТАНОВА ""З БОЙОВОЇ ПІДГОТОВКИ У
 NTL STANAG,"НАСТАНОВА ""З БОЙОВОЇ ПІДГОТОВКИ У ЗБРОЙНИХ СИЛАХ УКРАЇНИ""",Перелік завдань для оцінки І рівня штабів (підрозділів) НАТО Стандартизована Угода НАТО,no
 TACEVAL,"НАСТАНОВА ""З БОЙОВОЇ ПІДГОТОВКИ У ЗБРОЙНИХ СИЛАХ УКРАЇНИ""",Стандарт оцінки штабів (підрозділів) військово-повітряних сил НАТО,no
 `;
-
+*/
         function showStatus(message, type = 'success') {
             statusDiv.innerHTML = `<div class="status ${type}">${message}</div>`;
             setTimeout(() => {
@@ -738,14 +739,14 @@ TACEVAL,"НАСТАНОВА ""З БОЙОВОЇ ПІДГОТОВКИ У ЗБРО
             
             try {
                 // Завантаження файлу груп
-                // const groupsCSV = await loadCSVFile(FILES.groups);
-                // const groupsCount = await parseGroupsCSV(groupsCSV);
-                const groupsCount = await parseGroupsCSV(EMBEDDED_GROUPS_DATA);
+                const groupsCSV = await loadCSVFile(FILES.groups);
+                const groupsCount = await parseGroupsCSV(groupsCSV);
+                // const groupsCount = await parseGroupsCSV(EMBEDDED_GROUPS_DATA);
                 
                 // Завантаження файлу скорочень
-                // const abbreviationsCSV = await loadCSVFile(FILES.abbreviations);
-                // const abbreviationsCount = await parseAbbreviationsCSV(abbreviationsCSV);
-                const abbreviationsCount = await parseAbbreviationsCSV(EMBEDDED_ABBREVIATIONS_DATA);
+                const abbreviationsCSV = await loadCSVFile(FILES.abbreviations);
+                const abbreviationsCount = await parseAbbreviationsCSV(abbreviationsCSV);
+                // const abbreviationsCount = await parseAbbreviationsCSV(EMBEDDED_ABBREVIATIONS_DATA);
                 
                 showStatus(`✅ Успішно завантажено: ${groupsCount} груп, ${abbreviationsCount} скорочень`);
                 checkDataAndRender();
